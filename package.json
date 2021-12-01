@@ -1,0 +1,35 @@
+{
+    "name": "webdriverio",
+    "version": "1.0.0",
+    "description": "webdriverIO project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "wdio": "wdio run wdio.conf.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lutskevichm/webdriverIO.git"
+    },
+    "keywords": [
+        "webdriverIO"
+    ],
+    "author": "Maria Lutskevich",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/lutskevichm/webdriverIO/issues"
+    },
+    "homepage": "https://github.com/lutskevichm/webdriverIO#readme",
+    "devDependencies": {
+        "@wdio/allure-reporter": "^7.16.10",
+        "@wdio/cli": "^7.16.10",
+        "@wdio/cucumber-framework": "^7.16.6",
+        "@wdio/local-runner": "^7.16.10",
+        "chromedriver": "^96.0.0",
+        "eslint": "^8.3.0",
+        "wdio-chromedriver-service": "^7.2.2"
+    },
+    "dependencies": {
+        "cucumber": "^7.0.0-rc.0"
+    }
+}
