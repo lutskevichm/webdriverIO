@@ -1,4 +1,6 @@
 const Page = require('./page');
+const webdriverio = require('webdriverio');
+let client = webdriverio;
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -42,9 +44,12 @@ class CustomerPage extends Page {
     async fillName(firstname, lastname) {
         await this.inputFirstName.setValue(firstname);
         await this.inputLastName.setValue(lastname);
+     //   await browser.executeAsync('window.scrollTo(0, 200)');
     }
 
     async fillAddress(state, city, postalcode, addressline1) {
+        client = await this.inputState;
+        await client.scrollIntoView();
         await this.inputState.addValue(state);
         await browser.waitUntil(
             async () => (await this.inputState.getValue()) === state, {
@@ -62,6 +67,8 @@ class CustomerPage extends Page {
         );
         await this.inputAddressLine1.doubleClick();
         await this.inputAddressLine1.setValue(addressline1);
+        client = await this.inputAddressLine1;
+        client.keys('Enter');
         await browser.waitUntil(
             async () => (await this.inputAddressLine1.getValue()) === addressline1, {
                 timeout: 5000,
@@ -74,7 +81,7 @@ class CustomerPage extends Page {
         await this.inputPostalCode.setValue(postalcode);
         await browser.waitUntil(
             async () => (await this.inputPostalCode.getValue()) === postalcode, {
-                timeout: 7000,
+                timeout: 13000,
                 timeoutMsg: 'postal code is entered'
             }
         );
@@ -82,13 +89,15 @@ class CustomerPage extends Page {
     }
 
     async saveAndExit() {
+    //    await browser.executeAsync("arguments[0].style.backgroundColor = '" + "red" + "'",  this.btnSaveAndExit);
         await this.btnSaveAndExit.doubleClick();
         await browser.pause(1000);
         await browser.waitUntil(
             async () => (await $("*[id='customerHeaderContent']").isExisting()), {
-                timeout: 7000
+                timeout: 13000
             }
         );
     }
 }
+
 module.exports = new CustomerPage();

@@ -27,3 +27,4 @@ test/features
 test/step_definitions
 test/utils
 
+npx wdio run ./wdio.conf.js

@@ -4,7 +4,10 @@ exports.config = {
     // Runner Configuration
     // ====================
     //
-    //
+    //    
+    hostname: 'localhost',
+    port: 4444,
+    path: '/',
     // ==================
     // Specify Test Files
     // ==================
