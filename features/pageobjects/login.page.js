@@ -1,4 +1,5 @@
 const Page = require('./page');
+const logger = require('./../config/logger.config');
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -25,7 +26,9 @@ class LoginPage extends Page {
      */
     async login(username, password) {
         await this.inputUsername.setValue(username);
+        logger.info(`Username "${username}" is entered`);
         await this.inputPassword.setValue(password);
+        logger.info(`Password "${password}" is entered`);
         await this.btnSubmit.click();
     }
 

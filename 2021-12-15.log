@@ -1,0 +1,15 @@
+
+info: Username "qa" is entered
+info: Password "qa" is entered
+info: Search button is clicked
+info: Create Customer button is clicked
+info: Individual Customer is selected
+info: Customer creation is confirmed
+debug: First name "Maria" and Last name "QA007" are entered
+debug: State "AK" is entered
+debug: City "New_York" is entered
+debug: AddressLine1 "some_address" is entered
+debug: Zip code "12345" is entered
+debug: Save and Exit button is clicked
+info: Username "qa" is entered
+info: Password "qa" is entered

@@ -11,8 +11,8 @@ Feature: Customer Creation
     Then I should navigate to Customer page
 
     Examples:
-      | username  | password  | firstname | lastname  | state | city      | postalcode| addressline1  |
-      | qa        | qa        | qa2       | qa2       | AK    | New_York  | 12345     | some_address  |
+      | username  | password  | firstname   | lastname    | state | city      | postalcode| addressline1  |
+      | qa        | qa        | Maria       | QA007       | AK    | New_York  | 12345     | some_address  |
 
    
 

@@ -1,0 +1,19 @@
+2021-12-08T20:35:17.521Z WARN @wdio/config:ConfigParser: pattern test/spec/** did not match any file
+2021-12-08T20:35:17.523Z WARN @wdio/config:ConfigParser: pattern test/spec/multibrowser/** did not match any file
+2021-12-08T20:35:17.523Z WARN @wdio/config:ConfigParser: pattern test/spec/mobile/** did not match any file
+2021-12-08T20:35:17.524Z WARN @wdio/config:ConfigParser: pattern test/spec/** did not match any file
+2021-12-08T20:35:17.524Z WARN @wdio/config:ConfigParser: pattern test/spec/multibrowser/** did not match any file
+2021-12-08T20:35:17.524Z WARN @wdio/config:ConfigParser: pattern test/spec/mobile/** did not match any file
+2021-12-08T20:35:17.525Z WARN @wdio/config:ConfigParser: pattern test/ffOnly/* did not match any file
+2021-12-08T20:35:17.550Z INFO @wdio/cli:launcher: Run onPrepare hook
+2021-12-08T20:35:17.551Z WARN @wdio/config:ConfigParser: pattern test/spec/** did not match any file
+2021-12-08T20:35:17.551Z WARN @wdio/config:ConfigParser: pattern test/spec/multibrowser/** did not match any file
+2021-12-08T20:35:17.551Z WARN @wdio/config:ConfigParser: pattern test/spec/mobile/** did not match any file
+2021-12-08T20:35:17.552Z WARN @wdio/config:ConfigParser: pattern test/spec/** did not match any file
+2021-12-08T20:35:17.552Z WARN @wdio/config:ConfigParser: pattern test/spec/multibrowser/** did not match any file
+2021-12-08T20:35:17.552Z WARN @wdio/config:ConfigParser: pattern test/spec/mobile/** did not match any file
+2021-12-08T20:35:17.552Z WARN @wdio/config:ConfigParser: pattern test/ffOnly/* did not match any file
+2021-12-08T20:35:17.552Z ERROR @wdio/cli:launcher: No specs found to run, exiting with failure
+2021-12-08T20:35:17.552Z INFO @wdio/cli:launcher: Run onComplete hook
+2021-12-08T20:35:17.586Z INFO @wdio/local-runner: Shutting down spawned worker
+2021-12-08T20:35:17.851Z INFO @wdio/local-runner: Waiting for 0 to shut down gracefully

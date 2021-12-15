@@ -1,4 +1,5 @@
 const Page = require('./page');
+const logger = require('./../config/logger.config');
 const webdriverio = require('webdriverio');
 let client = webdriverio;
 
@@ -44,13 +45,15 @@ class CustomerPage extends Page {
     async fillName(firstname, lastname) {
         await this.inputFirstName.setValue(firstname);
         await this.inputLastName.setValue(lastname);
-     //   await browser.executeAsync('window.scrollTo(0, 200)');
+        logger.debug(`First name "${firstname}" and Last name "${lastname}" are entered`);
+        await browser.execute('window.scrollTo(0, 200)');
     }
 
     async fillAddress(state, city, postalcode, addressline1) {
         client = await this.inputState;
         await client.scrollIntoView();
         await this.inputState.addValue(state);
+        logger.debug(`State "${state}" is entered`);
         await browser.waitUntil(
             async () => (await this.inputState.getValue()) === state, {
                 timeout: 5000,
@@ -59,6 +62,7 @@ class CustomerPage extends Page {
         );
         await this.inputCity.click();
         await this.inputCity.setValue(city);
+        logger.debug(`City "${city}" is entered`);
         await browser.waitUntil(
             async () => (await this.inputCity.getValue()) === city, {
                 timeout: 5000,
@@ -69,6 +73,7 @@ class CustomerPage extends Page {
         await this.inputAddressLine1.setValue(addressline1);
         client = await this.inputAddressLine1;
         client.keys('Enter');
+        logger.debug(`AddressLine1 "${addressline1}" is entered`);
         await browser.waitUntil(
             async () => (await this.inputAddressLine1.getValue()) === addressline1, {
                 timeout: 5000,
@@ -79,6 +84,7 @@ class CustomerPage extends Page {
         await this.inputPostalCode.doubleClick();
         await browser.pause(1000);
         await this.inputPostalCode.setValue(postalcode);
+        logger.debug(`Zip code "${postalcode}" is entered`);
         await browser.waitUntil(
             async () => (await this.inputPostalCode.getValue()) === postalcode, {
                 timeout: 13000,
@@ -89,8 +95,9 @@ class CustomerPage extends Page {
     }
 
     async saveAndExit() {
-    //    await browser.executeAsync("arguments[0].style.backgroundColor = '" + "red" + "'",  this.btnSaveAndExit);
+        await browser.execute("arguments[0].style.backgroundColor = '" + "blue" + "'", await this.btnSaveAndExit);
         await this.btnSaveAndExit.doubleClick();
+        logger.debug(`Save and Exit button is clicked`);
         await browser.pause(1000);
         await browser.waitUntil(
             async () => (await $("*[id='customerHeaderContent']").isExisting()), {

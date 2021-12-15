@@ -11,4 +11,4 @@ module.exports = class Page {
         browser.maximizeWindow();
         return browser.url(`http://localhost:8080/${path}`);
     }
-}
+};
