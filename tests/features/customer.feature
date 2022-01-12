@@ -1,5 +1,6 @@
 Feature: Customer Creation
- 
+
+ @smoke
   Scenario Outline: As a user, I can create a Customer
 
     Given I am on the login page
@@ -12,7 +13,7 @@ Feature: Customer Creation
 
     Examples:
       | username  | password  | firstname   | lastname    | state | city      | postalcode| addressline1  |
-      | qa        | qa        | Maria       | Test001      | AK    | New_York  | 12345     | some_address  |
+      | qa        | qa        | Maria       | Test997     | AK    | New_York  | 12345     | some_address  |
 
    
 

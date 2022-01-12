@@ -34,8 +34,10 @@
     "dependencies": {
         "allure-commandline": "^2.17.2",
         "cucumber": "^7.0.0-rc.0",
+        "cucumber-pretty": "^1.5.2",
         "moment": "^2.29.1",
         "reporting-tool": "^0.0.2",
-        "winston": "^3.3.3"
+        "winston": "^3.3.3",
+        "yargs": "^17.3.1"
     }
 }

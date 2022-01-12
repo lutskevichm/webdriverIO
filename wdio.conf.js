@@ -1,4 +1,5 @@
-const allure = require('allure-commandline')
+const allure = require('allure-commandline');
+const argv = require('yargs').argv;
 
 exports.config = {
     //
@@ -207,7 +208,10 @@ exports.config = {
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
-        ignoreUndefinedDefinitions: false
+        ignoreUndefinedDefinitions: false,
+        ignoreUncaughtExceptions: true,
+        format: ['json:./reports/report.json', './node_modules/cucumber-pretty'],
+        tags: argv.tag || '@smoke'
     },
 
     //
