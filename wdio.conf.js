@@ -1,5 +1,11 @@
 const allure = require('allure-commandline');
 const yargs = require('yargs').argv;
+const {
+    generate
+} = require('multiple-cucumber-html-reporter');
+const {
+    removeSync
+} = require('fs-extra');
 
 exports.config = {
     //
@@ -157,6 +163,10 @@ exports.config = {
     reporters: ['dot', 'concise',
         ['allure', {
             outputDir: 'allure-results'
+        }],
+        ['cucumberjs-json', {
+            jsonFolder: '.tmp/new/',
+            language: 'en',
         }]
     ],
 
@@ -194,7 +204,7 @@ exports.config = {
         // <boolean> abort the run on first failure
         failFast: false,
         // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
-        format: ['pretty', 'json:./reports/report.json'],
+        format: ['json:./reports/report.json', './node_modules/cucumber-pretty'],
         // <boolean> hide step definition snippets for pending steps
         snippets: true,
         // <boolean> hide source uris
@@ -208,13 +218,29 @@ exports.config = {
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
-        ignoreUndefinedDefinitions: false
+        ignoreUndefinedDefinitions: false,
+        ignoreUncaughtExceptions: true
 
     },
 
     //
     // =====
     // Hooks
+    onPrepare: () => {
+        // Remove the `.tmp/` folder that holds the json and report files
+        removeSync('.tmp/');
+    },
+    onComplete: () => {
+        // Generate the report when it all tests are done
+        generate({
+            // Required
+            // This part needs to be the same path where you store the JSON files
+            // default = '.tmp/json/'
+            jsonDir: '.tmp/new/',
+            reportPath: '.tmp/report/',
+            // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
+        });
+    }
     // =====
     // WebdriverIO provides several hooks you can use to interfere with the test process in order to enhance
     // it and to build services around it. You can either apply a single function or an array of
@@ -225,8 +251,7 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -313,10 +338,10 @@ exports.config = {
      * @param {number}                 result.duration  duration of scenario in milliseconds
      * @param {Object}                 context          Cucumber World object
      */
-    afterScenario: function (scenario) {
-        console.log("After scenario, close window");
-        browser.closeWindow();
-    },
+    //   afterScenario: function (scenario) {
+    //       console.log("After scenario, close window");
+    //       browser.closeWindow();
+    //   },
     /**
      *
      * Runs after a Cucumber Feature.
