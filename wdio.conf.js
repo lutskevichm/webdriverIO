@@ -1,5 +1,5 @@
 const allure = require('allure-commandline');
-const argv = require('yargs').argv;
+const yargs = require('yargs').argv;
 
 exports.config = {
     //
@@ -194,7 +194,7 @@ exports.config = {
         // <boolean> abort the run on first failure
         failFast: false,
         // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
-        format: ['pretty'],
+        format: ['pretty', 'json:./reports/report.json'],
         // <boolean> hide step definition snippets for pending steps
         snippets: true,
         // <boolean> hide source uris
@@ -204,14 +204,12 @@ exports.config = {
         // <boolean> fail if there are any undefined or pending steps
         strict: false,
         // <string> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: '',
+        tagExpression: yargs.tag || '@smoke',
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
-        ignoreUndefinedDefinitions: false,
-        ignoreUncaughtExceptions: true,
-        format: ['json:./reports/report.json', './node_modules/cucumber-pretty'],
-        tags: argv.tag || '@smoke'
+        ignoreUndefinedDefinitions: false
+
     },
 
     //
