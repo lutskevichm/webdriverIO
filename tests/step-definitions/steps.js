@@ -7,9 +7,7 @@ const {
 const LoginPage = require('../pageobjects/login.page');
 const SearchPage = require('../pageobjects/search.page');
 const CustomerPage = require('../pageobjects/customer.page');
-const {
-    default: CucumberJsJsonReporter
-} = require('wdio-cucumberjs-json-reporter');
+
 
 const pages = {
     login: LoginPage
@@ -21,7 +19,7 @@ Given(/^I am on the (\w+) page$/, async (page) => {
 
 When(/^I login with (\w+) and (.+)$/, async (username, password) => {
     await LoginPage.login(username, password);
-    CucumberJsJsonReporter.attach(browser.takeScreenshot(), 'image/png');
+
 });
 
 Then(/^I should navigate to Main page$/, async () => {

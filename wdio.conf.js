@@ -6,6 +6,32 @@ const {
 const {
     removeSync
 } = require('fs-extra');
+const reportportal = require('wdio-reportportal-reporter');
+const RpService = require("wdio-reportportal-service");
+const conf = {
+    reportPortalClientConfig: { // report portal settings
+        token: 'xxxxx-xxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxx',
+        endpoint: 'https://reportportal.xxxx.com/api/v1',
+        launch: 'maria_xxxxxx_TEST_EXAMPLE',
+        project: 'maria_xxxxxxx_personal',
+        mode: 'DEFAULT',
+        debug: false,
+        description: "Launch description text",
+        attributes: [{ key: "tag", value: "foo" }]
+    },
+    reportSeleniumCommands: false, // add selenium commands to log
+    seleniumCommandsLogLevel: 'debug', // log level for selenium commands
+    autoAttachScreenshots: false, // automatically add screenshots
+    screenshotsLogLevel: 'info', // log level for screenshots
+    parseTagsFromTestTitle: false, // parse strings like `@foo` from titles and add to Report Portal
+    cucumberNestedSteps: false, // report cucumber steps as Report Portal steps
+    autoAttachCucumberFeatureToScenario: false, // requires cucumberNestedSteps to be true for use
+    sanitizeErrorMessages: true, // strip color ascii characters from error stacktrace
+    sauceLabOptions: {
+        enabled: true, // automatically add SauseLab ID to rp tags.
+        sldc: "US" // automatically add SauseLab region to rp tags.
+    }
+};
 
 exports.config = {
     //
@@ -137,7 +163,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['chromedriver', [RpService, {}]],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -164,6 +190,7 @@ exports.config = {
         ['allure', {
             outputDir: 'allure-results'
         }],
+        [reportportal, conf],
         ['cucumberjs-json', {
             jsonFolder: '.tmp/new/',
             language: 'en',

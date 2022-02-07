@@ -32,10 +32,12 @@ class CustomerPage extends Page {
 
     get inputAddressLine1() {
         return $("*[id='crmForm:addressInfo_0_addressLine1']");
+        logger.error('Issue with address');
     }
 
     get btnSaveAndExit() {
         return $("*[id='topSaveAndExitLink']");
+        logger.error('Customer is not saved');
     }
 
     /**

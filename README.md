@@ -91,3 +91,11 @@ npm i yargs
 npm i cucumber-pretty
 
 npm install fs-extra --save-dev
+
+Module 14
+npm install @wdio/junit-reporter --save-dev
+npm install --save-dev @reportportal/agent-js-webdriverio
+npm install wdio-reportportal-reporter --save-dev
+npm install wdio-reportportal-service --save-dev
+wdio-chromedriver-service --save-dev
+npm i winston3-logstash-transport

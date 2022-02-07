@@ -1,6 +1,6 @@
 Feature: Customer Creation
 
- @smoke
+ @smoke @regression
   Scenario Outline: As a user, I can create a Customer
 
     Given I am on the login page
